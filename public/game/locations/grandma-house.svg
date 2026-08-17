@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#9fb7ad"/>
+  <path fill="#dfcbaa" d="M0 0h1600v260l-235-28-230 40-245-38-250 41-225-34-260 28L0 245Z"/>
+  <circle cx="1320" cy="145" r="65" fill="#d49368"/>
+  <path fill="#718a79" d="M0 345 185 244l188 73 214-109 214 110 240-122 210 112 176-76 173 96v250H0Z"/>
+  <path fill="#89a078" d="M0 485q235-67 438 3t408 1q216-75 393-2t361-5v418H0Z"/>
+
+  <g id="grandma-house">
+    <path fill="#c7a47b" d="M720 286h676v423H720Z"/>
+    <path fill="#724e3e" d="m654 300 399-246 409 246Z"/>
+    <path fill="#94694e" d="m1053 54 409 246h-102l-312-187-294 187H654Z"/>
+    <path fill="#76523e" d="M758 348h27v361h-27Zm567 0h27v361h-27ZM758 421h594v24H758Z"/>
+    <path fill="#a47b5c" d="M908 94h49V0h53v100l-42 40Z"/>
+    <path fill="#4f605c" d="M1009 465h124v244h-124Z"/>
+    <path fill="#364d4a" d="M1030 491h82v218h-82Z"/><circle cx="1094" cy="594" r="8" fill="#e0b471"/>
+    <g fill="#f3d38f" stroke="#76523e" stroke-width="10">
+      <path d="M812 367h117v122H812Z"/><path d="M1198 367h116v122h-116Z"/>
+      <path d="M812 545h117v112H812Z"/><path d="M1198 545h116v112h-116Z"/>
+    </g>
+    <g stroke="#76523e" stroke-width="9">
+      <path d="M870 367v122m-58-61h117m327-61v122m-58-61h116M870 545v112m-58-56h117m327-56v112m-58-56h116"/>
+    </g>
+    <path fill="#87624c" d="M970 444h203v32H970Z"/><path fill="#e0ba78" d="m985 459 36-15 34 15 38-15 64 15-8 13H996Z"/>
+  </g>
+
+  <path fill="#b8aa90" d="M0 900V760l305-74 271 42 244-72 290 66 265-61 225 72v167Z"/>
+  <path fill="#d4c7aa" d="m555 900 357-254h224l286 254Z"/>
+  <g fill="#948d80"><path d="m720 880 98-75 103 11 68 84H744Z"/><path d="m835 768 72-58 92 8 66 61-118 21Z"/></g>
+
+  <g id="garden">
+    <path fill="#765641" d="M112 614h20v196h-20Zm118-25h20v197h-20Zm117-24h20v196h-20Zm118-25h20v198h-20Z"/>
+    <path d="m105 645 385-79m-380 137 379-78" fill="none" stroke="#765641" stroke-width="16"/>
+    <g fill="#5f8155"><circle cx="161" cy="725" r="42"/><circle cx="277" cy="694" r="46"/><circle cx="398" cy="671" r="41"/></g>
+    <g fill="#d7a66d"><circle cx="148" cy="710" r="10"/><circle cx="180" cy="738" r="8"/><circle cx="263" cy="681" r="9"/><circle cx="304" cy="705" r="10"/><circle cx="390" cy="654" r="9"/></g>
+  </g>
+
+  <g id="porch">
+    <path fill="#74533f" d="M699 702h482v26H699Z"/><path fill="#936b51" d="m737 728 48 0-29 126h-55Zm373 0h48l40 126h-56Z"/>
+    <path fill="#8a674e" d="M744 745h420v28H744Zm-22 57h468v30H722Z"/>
+    <path fill="#755746" d="M1370 700h93v72h-93Z"/><path d="M1370 724h93m-47-24v72" stroke="#9c795a" stroke-width="8"/>
+  </g>
+
+  <g id="warm-details">
+    <path d="M635 752V540m-18 0h36" stroke="#4b4540" stroke-width="13"/><path fill="#f2cf7c" stroke="#5d4b3d" stroke-width="7" d="m609 554 26-35 27 35-10 42h-34Z"/>
+    <circle cx="635" cy="558" r="24" fill="#ffe29a" opacity=".55"/>
+    <path fill="#8a5d48" d="M529 720h86l-12 65h-61Z"/><path fill="#55764e" d="M548 723q-54-61 9-85 21 39-9 85Zm18 0q2-77 61-67-5 50-61 67Z"/>
+    <path d="M1490 671q-41-65 3-110 46 47 4 110" fill="#55764e"/>
+  </g>
+</svg>

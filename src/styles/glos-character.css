@@ -1,0 +1,37 @@
+.glos { position: absolute; z-index: 2; right: clamp(18px, 5vw, 80px); bottom: -8px; width: clamp(190px, 22vw, 310px); pointer-events: none; transform-origin: center bottom; }
+.glos svg { display: block; width: 100%; overflow: visible; }
+.glos-body, .glos-head { transform-origin: center bottom; animation: glos-breathe 3.2s ease-in-out infinite; }
+.glos-crystal { opacity: 0; transform-origin: center; }
+.glos-hand-crystal { opacity: 0; transform-origin: 195px 289px; }
+.glos--hand-crystal .glos-hand-crystal { opacity: 1; animation: hand-crystal-glint 1.5s ease-in-out infinite; filter: drop-shadow(0 0 8px #8cecff); }
+
+.glos--walk .glos-body { animation: glos-step .42s ease-in-out infinite alternate; }
+.glos--walk .glos-leg--left { animation: leg-left .42s ease-in-out infinite alternate; transform-origin: 105px 304px; }
+.glos--walk .glos-leg--right { animation: leg-right .42s ease-in-out infinite alternate; transform-origin: 145px 304px; }
+.glos--walk .glos-arm--left { animation: arm-left .42s ease-in-out infinite alternate; transform-origin: 68px 190px; }
+.glos--walk .glos-arm--right { animation: arm-right .42s ease-in-out infinite alternate; transform-origin: 177px 190px; }
+.glos--stop { animation: glos-arrive .5s ease-out both; }
+.glos--interact .glos-arm--right { transform: rotate(-42deg) translate(2px, -5px); transform-origin: 177px 190px; }
+.glos--receive .glos-arm--left { transform: rotate(-24deg) translate(20px, -14px); transform-origin: 68px 190px; }
+.glos--receive .glos-arm--right { transform: rotate(25deg) translate(-20px, -13px); transform-origin: 177px 190px; }
+.glos--receive .glos-crystal { opacity: 1; animation: crystal-glint 1.8s ease-in-out infinite; }
+.glos--dialogue .glos-arm--right { transform: rotate(-65deg) translate(8px, -6px); transform-origin: 177px 190px; }
+
+.glos-face--alert .glos-brows path:first-child { transform: rotate(11deg); transform-origin: 101px 73px; }
+.glos-face--alert .glos-brows path:last-child { transform: rotate(-11deg); transform-origin: 139px 73px; }
+.glos-face--wonder .glos-brows { transform: translateY(-6px); }
+.glos-face--happy .glos-eyes { transform: scaleY(.55); transform-origin: center; }
+.glos-face--focused .glos-brows { transform: translateY(3px); }
+
+@keyframes glos-breathe { 50% { transform: translateY(-2px); } }
+@keyframes glos-step { to { transform: translateY(-6px); } }
+@keyframes leg-left { to { transform: rotate(8deg) translateX(3px); } }
+@keyframes leg-right { to { transform: rotate(-8deg) translateX(-3px); } }
+@keyframes arm-left { to { transform: rotate(-8deg); } }
+@keyframes arm-right { to { transform: rotate(8deg); } }
+@keyframes glos-arrive { from { transform: translateX(34px); opacity: .2; } to { transform: none; opacity: 1; } }
+@keyframes crystal-glint { 50% { transform: scale(1.12); fill: #b7e5dc; } }
+@keyframes hand-crystal-glint { 50% { transform: scale(1.12); fill: #c4f8ff; filter: drop-shadow(0 0 14px #a3f1ff); } }
+
+@media (max-width: 720px) { .glos { position: absolute; width: 145px; right: 5px; bottom: 0; opacity: .9; } }
+@media (prefers-reduced-motion: reduce) { .glos *, .glos { animation: none !important; } }

@@ -1,0 +1,3 @@
+.not-found { min-height: 100svh; display: grid; place-content: center; padding: 32px; text-align: center; background: #122c29; }
+.not-found h1 { max-width: 600px; margin: 0 0 32px; font-family: Manrope, sans-serif; font-size: clamp(40px, 7vw, 80px); font-weight: 400; letter-spacing: -.05em; }
+.not-found a { color: #efb473; font-size: 13px; text-underline-offset: 6px; }

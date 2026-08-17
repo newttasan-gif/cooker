@@ -7,7 +7,7 @@
 //   3) Задеплой:        npm run ai:deploy
 
 const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY');
-const MODEL = 'gemini-3.5-flash';
+const MODEL = 'gemini-2.5-flash';
 
 const cors = {
   'Access-Control-Allow-Origin': '*',
@@ -21,6 +21,21 @@ type GeminiResponse = {
     };
   }>;
 };
+
+async function generate(prompt: string, system: string, useSearch: boolean) {
+  return fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        systemInstruction: system ? { parts: [{ text: system }] } : undefined,
+        contents: [{ parts: [{ text: prompt }] }],
+        tools: useSearch ? [{ google_search: {} }] : undefined,
+      }),
+    },
+  );
+}
 
 function json(body: object, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -44,30 +59,26 @@ Deno.serve(async (req) => {
     const system = typeof body.system === 'string' ? body.system.trim() : '';
 
     if (!prompt) return json({ error: 'Напиши запрос для AI.' }, 400);
-    if (prompt.length > 10_000 || system.length > 5_000) {
+    if (prompt.length > 40_000 || system.length > 60_000) {
       return json({ error: 'Запрос слишком длинный. Сделай его короче.' }, 400);
     }
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: system ? { parts: [{ text: system }] } : undefined,
-          contents: [{ parts: [{ text: prompt }] }],
-        }),
-      },
-    );
-
+    const datedSystem = `Сегодня ${new Date().toISOString().slice(0, 10)}.\n${system}`;
+    let response = await generate(prompt, datedSystem, true);
+    if (!response.ok) {
+      console.warn('Gemini Search unavailable, retrying without it', response.status);
+      response = await generate(prompt, datedSystem, false);
+    }
     const data = (await response.json()) as GeminiResponse;
     if (!response.ok) {
       console.error('Gemini request failed', response.status, data);
       return json({ error: 'AI сейчас не ответил. Попробуй ещё раз чуть позже.' }, 502);
     }
 
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (typeof text !== 'string' || !text.trim()) {
+    const text = data?.candidates?.[0]?.content?.parts
+      ?.map((part) => typeof part.text === 'string' ? part.text : '')
+      .join('\n').trim();
+    if (!text) {
       console.error('Gemini returned an empty response', data);
       return json({ error: 'AI вернул пустой ответ. Попробуй переформулировать запрос.' }, 502);
     }

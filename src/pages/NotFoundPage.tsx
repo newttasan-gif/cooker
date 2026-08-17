@@ -1,14 +1,12 @@
 import { Link } from 'wouter';
+import '../styles/not-found.css';
 
 export function NotFoundPage() {
   return (
-    <main className="container">
-      <section className="hello">
-        <h1>Такой страницы пока нет</h1>
-        <p>
-          <Link href="/">Вернуться на главную</Link>
-        </p>
-      </section>
+    <main className="not-found">
+      <p className="eyebrow">404 · неизвестное направление</p>
+      <h1>Такой тропы пока нет.</h1>
+      <Link href="/">Вернуться к карте</Link>
     </main>
   );
 }

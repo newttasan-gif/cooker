@@ -1,0 +1,40 @@
+.home-page {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(28px, 7vw, 110px);
+  overflow: hidden;
+  background: #526b66 url('/game/locations/foothill.svg') center / cover no-repeat;
+}
+
+.home-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20, 43, 41, .94), rgba(27, 51, 48, .6) 43%, rgba(27, 51, 48, .05) 74%);
+}
+
+.home-page__sun { position: absolute; right: 12vw; top: 12vh; width: 120px; height: 120px; border-radius: 50%; background: rgba(232, 142, 86, .24); }
+.home-page__content { position: relative; max-width: 700px; }
+.eyebrow { margin: 0 0 24px; color: #e9ad72; font-size: 10px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; }
+
+.home-page h1 {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: clamp(58px, 8.5vw, 128px);
+  font-weight: 400;
+  line-height: .89;
+  letter-spacing: -.07em;
+}
+
+.home-page__lead { max-width: 440px; margin: 36px 0; color: #d4ddd8; font-size: 16px; line-height: 1.7; }
+.primary-link { display: inline-flex; align-items: center; gap: 30px; padding: 17px 21px; color: #19302e; background: #edbe81; text-decoration: none; font-size: 12px; font-weight: 600; }
+.primary-link:hover { background: #ffd79f; }
+.home-page__chapter { position: absolute; right: clamp(28px, 5vw, 80px); bottom: 32px; color: #d5ddd8; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+
+@media (max-width: 650px) {
+  .home-page { align-items: flex-end; padding-bottom: 115px; background-position: 61% center; }
+  .home-page::before { background: linear-gradient(0deg, rgba(18, 39, 37, .98) 8%, rgba(20, 43, 41, .25)); }
+  .home-page__chapter { left: 28px; right: auto; }
+}

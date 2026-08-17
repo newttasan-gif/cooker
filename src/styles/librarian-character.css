@@ -1,0 +1,6 @@
+.librarian { position: absolute; z-index: 2; right: clamp(16px, 5vw, 80px); bottom: -8px; width: clamp(190px, 22vw, 300px); pointer-events: none; animation: librarian-in .55s ease-out both; }
+.librarian svg { display: block; width: 100%; overflow: visible; }
+.game-scene--encounter:has(.librarian) .glos { right: clamp(195px, 25vw, 350px); width: clamp(165px, 19vw, 265px); }
+@keyframes librarian-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+@media (max-width: 720px) { .librarian { width: 140px; right: -9px; } .game-scene--encounter:has(.librarian) .glos { width: 115px; right: 103px; } }
+@media (prefers-reduced-motion: reduce) { .librarian { animation: none; } }

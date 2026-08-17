@@ -1,0 +1,14 @@
+.traveler { position: absolute; z-index: 2; right: clamp(15px, 3vw, 50px); bottom: -8px; width: clamp(190px, 21vw, 290px); pointer-events: none; transform-origin: center bottom; animation: traveler-in .6s ease-out both; }
+.traveler svg { display: block; width: 100%; overflow: visible; }
+.traveler__lamp { filter: drop-shadow(0 0 7px #ffd982) drop-shadow(0 0 18px #e7b75c); animation: lamp-glow 2.2s ease-in-out infinite; }
+.game-scene--encounter .glos { right: clamp(185px, 24vw, 340px); width: clamp(165px, 19vw, 265px); }
+
+@keyframes traveler-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes lamp-glow { 50% { opacity: .72; transform: scale(.92); transform-origin: 197px 198px; } }
+
+@media (max-width: 720px) {
+  .traveler { width: 140px; right: -8px; bottom: 0; opacity: .9; }
+  .game-scene--encounter .glos { width: 120px; right: 105px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .traveler, .traveler__lamp { animation: none; } }

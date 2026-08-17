@@ -1,0 +1,12 @@
+.friends { position: absolute; z-index: 2; right: clamp(8px, 2vw, 34px); bottom: -8px; width: clamp(280px, 30vw, 410px); pointer-events: none; animation: friends-in .55s ease-out both; }
+.friends svg { display: block; width: 100%; overflow: visible; }
+.game-scene--encounter:has(.friends) .glos { right: clamp(290px, 35vw, 475px); width: clamp(160px, 18vw, 250px); }
+
+@keyframes friends-in { from { opacity: 0; transform: translateX(25px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 720px) {
+  .friends { width: 195px; right: -20px; bottom: 0; opacity: .94; }
+  .game-scene--encounter:has(.friends) .glos { width: 112px; right: 145px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .friends { animation: none; } }
