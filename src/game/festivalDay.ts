@@ -1,6 +1,7 @@
 import type { StoryNode } from './types';
 import { festivalFriendNodes } from './festivalFriends';
 import { festivalLibraryNodes } from './festivalLibrary';
+import { festivalFeastNodes } from './festivalFeast';
 
 const room = { artwork: '/game/locations/grandma-house.svg', chapter: 'Глава II' };
 const festival = { artwork: '/game/locations/village-square.svg', chapter: 'Глава II', festival: true };
@@ -28,10 +29,10 @@ export const festivalDayNodes: Record<string, StoryNode> = {
       { id: 'festival-friends', label: '«Пойду погуляю с друзьями»', detail: 'Найти Тима и Лео на площади', target: 'festival-friends', activity: 'friends' },
       { id: 'festival-library', label: '«Зайду в библиотеку»', detail: 'Прочитать три фэнтези-истории', target: 'festival-library', activity: 'library' },
       { id: 'festival-chess', label: '«Бабуль, сыграем в шахматы?»', detail: 'Провести обычную партию без награды', target: 'festival-grandma-chess' },
+      { id: 'festival-feast', label: '«Зайду к праздничному столу»', detail: 'Поужинать и поговорить с жителями деревни', target: 'festival-feast' },
       {
         id: 'festival-home', label: '«На сегодня хватит. Пойдём домой»', detail: 'Завершить фестивальный вечер',
         target: 'festival-rest-ending', targetIfVisited: { nodeId: 'old-village-square', target: 'festival-home-cutscene' },
-        requiresCompletedActivities: ['fishing', 'friends', 'library'],
       },
     ],
   },
@@ -70,4 +71,5 @@ export const festivalDayNodes: Record<string, StoryNode> = {
   },
   ...festivalFriendNodes,
   ...festivalLibraryNodes,
+  ...festivalFeastNodes,
 };

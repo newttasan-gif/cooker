@@ -28,7 +28,6 @@ export function useStoryGame() {
         (!choice.hideAfterTargetVisited || !visitedIds.includes(getTarget(choice)))
         && (!choice.hideIfItem || !itemIds.includes(choice.hideIfItem))
         && (!choice.grantsItem || !itemIds.includes(choice.grantsItem))
-        && (!choice.activity || !completedActivities.includes(choice.activity))
         && (!choice.requiresCompletedActivities
           || choice.requiresCompletedActivities.every((activity) => completedActivities.includes(activity)))
       ),
