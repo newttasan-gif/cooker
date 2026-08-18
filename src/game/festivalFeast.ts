@@ -11,9 +11,15 @@ export const festivalFeastNodes: Record<string, StoryNode> = {
     character: { pose: 'dialogue', mood: 'happy' }, title: 'Длинный стол под фонариками',
     text: 'За общим столом собрались жители деревни. Здесь пахнет свежим хлебом, печёными яблоками и травяным чаем. Тим подвигает Глосу свободную тарелку, а Лео уже спорит с бабушкой о самом вкусном пироге.',
     choices: [
+      { id: 'feast-healthy-food', label: 'Собрать полезную тарелку', detail: 'Выбрать полезные продукты и не трогать вредные', target: 'festival-healthy-food' },
       { id: 'feast-help', label: 'Помочь разнести угощения', detail: 'Познакомиться с жителями за столом', target: 'festival-feast-help' },
       { id: 'feast-story', label: 'Сесть рядом с бабушкой', detail: 'Послушать праздничную историю', target: 'festival-feast-story' },
     ],
+  },
+  'festival-healthy-food': {
+    id: 'festival-healthy-food', kind: 'scene', speaker: 'Бабушка', ...feast,
+    character: { pose: 'interact', mood: 'focused' }, title: 'Полезная тарелка',
+    text: 'На столе перемешались полезные продукты и сладости.', choices: [], specialTarget: 'healthy-food',
   },
   'festival-feast-help': {
     id: 'festival-feast-help', kind: 'dialogue', speaker: 'Жители деревни', ...feast,

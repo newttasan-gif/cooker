@@ -33,6 +33,7 @@ export const chapterOne: Chapter = {
     'sun-key-library': { id: 'sun-key-library', name: 'Часть ключа: книга', description: 'Латунный фрагмент из заброшенной библиотеки.' },
     'sun-key-traveler': { id: 'sun-key-traveler', name: 'Часть ключа: странник', description: 'Тёплый фрагмент, который хранил странник.' },
     'sun-key-camp': { id: 'sun-key-camp', name: 'Часть ключа: навес', description: 'Фрагмент из будки возле места отдыха.' },
+    'green-book-clue': { id: 'green-book-clue', name: 'Совет бабушки', description: 'Семь зелёных книг спрятаны среди обычных корешков.' },
   },
   nodes: {
     foothill: {

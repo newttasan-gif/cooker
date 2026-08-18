@@ -1,5 +1,6 @@
 .game-scene { position: relative; min-height: 100svh; overflow: hidden; background: #34504c; }
-.game-scene__art { position: absolute; inset: 0; background: var(--scene-art) center / cover no-repeat; animation: scene-in .7s ease both; }
+.game-scene__art { position: absolute; inset: -1.5%; background: var(--scene-art) center / cover no-repeat; animation: scene-in .7s ease both, scene-breathe 16s ease-in-out .7s infinite alternate; }
+.game-scene__art::before { content: ''; position: absolute; inset: 0; opacity: .24; background: linear-gradient(105deg,transparent 25%,rgba(255,235,181,.2) 48%,transparent 68%); animation: light-drift 12s ease-in-out infinite alternate; }
 .game-scene--festival .game-scene__art { filter: brightness(.52) saturate(.92) hue-rotate(8deg); }
 .game-scene--festival .game-scene__art::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(8, 17, 42, .58), rgba(18, 30, 48, .18) 55%, rgba(8, 19, 30, .34)); }
 .game-scene--festival .game-scene__art::after { content: ''; position: absolute; z-index: 1; left: 3%; right: 3%; top: 23%; height: 22%; background: radial-gradient(circle, #ffd47f 0 4px, transparent 5px) 0 0 / 54px 25px repeat-x, radial-gradient(circle, #e98769 0 4px, transparent 5px) 27px 34px / 54px 25px repeat-x; clip-path: polygon(0 0, 50% 90%, 100% 0, 100% 20%, 50% 100%, 0 20%); filter: drop-shadow(0 0 7px #ffc66f); }
@@ -38,6 +39,8 @@
 
 @keyframes card-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes scene-in { from { opacity: .55; transform: scale(1.025); } to { opacity: 1; transform: scale(1); } }
+@keyframes scene-breathe { from { transform: scale(1); background-position: 49% center; } to { transform: scale(1.025); background-position: 51% center; } }
+@keyframes light-drift { from { transform: translateX(-8%); opacity: .12; } to { transform: translateX(8%); opacity: .3; } }
 @keyframes end-in { from { opacity: 0; } to { opacity: 1; } }
 
 @media (max-width: 720px) {
@@ -51,4 +54,4 @@
   .inventory { left: 22px; right: auto; bottom: 22px; }
 }
 
-@media (prefers-reduced-motion: reduce) { .story-card, .chapter-end, .game-scene__art { animation: none; } .choice { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .story-card, .chapter-end, .game-scene__art, .game-scene__art::before { animation: none; } .choice { transition: none; } }

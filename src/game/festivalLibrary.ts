@@ -8,9 +8,14 @@ const library = {
 export const festivalLibraryNodes: Record<string, StoryNode> = {
   'festival-library': {
     id: 'festival-library', kind: 'dialogue', speaker: 'Библиотекарша Мира', ...library,
-    character: { pose: 'dialogue', mood: 'happy' }, title: 'Три истории на вечер',
-    text: '«Я приготовила для фестиваля три фэнтези-книги. Начни с истории о городе над облаками, а дальше одна книга сама приведёт тебя к другой».',
-    choices: [{ id: 'library-first', label: 'Взять «Город над облаками»', detail: 'Открыть первую фэнтези-книгу', target: 'festival-library-clouds' }],
+    character: { pose: 'dialogue', mood: 'happy' }, title: 'Тайник библиотекарши',
+    text: '«Бабушка раскрыла тебе мою загадку? Тогда осмотри три пары стеллажей. Зелёные корешки почти сливаются с тенями, но внимательный читатель найдёт все семь».',
+    choices: [{ id: 'library-search-start', label: 'Подойти к первой паре стеллажей', detail: 'Искать книги от первого лица', target: 'festival-library-search' }],
+  },
+  'festival-library-search': {
+    id: 'festival-library-search', kind: 'scene', ...library, location: 'Между стеллажами',
+    character: { pose: 'interact', mood: 'focused' }, title: 'Семь зелёных книг',
+    text: 'Нужно внимательно осмотреть корешки на полках.', choices: [], specialTarget: 'library-search',
   },
   'festival-library-clouds': {
     id: 'festival-library-clouds', kind: 'dialogue', speaker: 'Книга «Город над облаками»', ...library,

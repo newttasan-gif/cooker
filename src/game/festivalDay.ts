@@ -25,9 +25,10 @@ export const festivalDayNodes: Record<string, StoryNode> = {
     character: { pose: 'dialogue', mood: 'happy' }, title: 'Вечер только начинается',
     text: '«Выбирай сам, Глос. У воды хорошо клюёт, Тим и Лео гуляют среди гирлянд, а библиотека открыта до конца фестиваля. Возвращайся после любого дела».',
     choices: [
+      { id: 'ask-green-books', label: '«Бабуль, что ты знаешь о старой библиотеке?»', detail: 'Расспросить бабушку о деревенском прошлом', target: 'festival-books-clue', grantsItem: 'green-book-clue', hideIfItem: 'green-book-clue' },
       { id: 'festival-fishing', label: '«Я пойду на рыбалку»', detail: 'Выловить 15 рыб у вечернего берега', target: 'festival-fishing', activity: 'fishing' },
       { id: 'festival-friends', label: '«Пойду погуляю с друзьями»', detail: 'Найти Тима и Лео на площади', target: 'festival-friends', activity: 'friends' },
-      { id: 'festival-library', label: '«Зайду в библиотеку»', detail: 'Прочитать три фэнтези-истории', target: 'festival-library', activity: 'library' },
+      { id: 'festival-library', label: '«Зайду в библиотеку и проверю подсказку»', detail: 'Осмотреть старые стеллажи', showIfItem: 'green-book-clue', target: 'festival-library', activity: 'library' },
       { id: 'festival-chess', label: '«Бабуль, сыграем в шахматы?»', detail: 'Провести обычную партию без награды', target: 'festival-grandma-chess' },
       { id: 'festival-feast', label: '«Зайду к праздничному столу»', detail: 'Поужинать и поговорить с жителями деревни', target: 'festival-feast' },
       {
@@ -35,6 +36,12 @@ export const festivalDayNodes: Record<string, StoryNode> = {
         target: 'festival-rest-ending', targetIfVisited: { nodeId: 'old-village-square', target: 'festival-home-cutscene' },
       },
     ],
+  },
+  'festival-books-clue': {
+    id: 'festival-books-clue', kind: 'dialogue', speaker: 'Бабушка', location: 'Фестивальная деревня', ...grandma,
+    character: { pose: 'dialogue', mood: 'wonder' }, title: 'Семь зелёных корешков',
+    text: '«Помню старую игру библиотекарши: среди обычных книг она прятала семь тёмно-зелёных. Сначала одну, потом две, а в дальней секции — ещё четыре. Цвет неброский, смотри внимательно».',
+    choices: [{ id: 'books-clue-back', label: '«Спасибо, теперь я знаю, что искать»', detail: 'Вернуться к выбору занятий', target: 'festival-grandma' }],
   },
   'festival-fishing': {
     id: 'festival-fishing', kind: 'scene', location: 'Фестивальный берег', ...festival,

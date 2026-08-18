@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GameScene } from '../components/GameScene';
 import { GameStartScreen } from '../components/GameStartScreen';
 import { IntroSequence } from '../components/IntroSequence';
 import { FishingGame } from '../components/FishingGame';
 import { ChessGame } from '../components/ChessGame';
+import { HealthyFoodGame } from '../components/HealthyFoodGame';
+import { LibrarySearchGame } from '../components/LibrarySearchGame';
 import { chapterOne } from '../game/chapterOne';
 import { useStoryGame } from '../game/useStoryGame';
 import { createSave, deleteSave, getSaveTitle, loadSaves, type GameSave } from '../game/saves';
 import type { OracleMessage } from '../game/oracleChats';
+import { unlockAchievement } from '../game/achievements';
 
 export function GamePage() {
   const [hasStarted, setHasStarted] = useState(false);
@@ -18,6 +21,10 @@ export function GamePage() {
   const [oracleMessages, setOracleMessages] = useState<OracleMessage[]>([]);
   const [activeOracleChatId, setActiveOracleChatId] = useState<string>();
   const game = useStoryGame();
+
+  useEffect(() => {
+    if (game.visitedCount >= 20) unlockAchievement('explorer');
+  }, [game.visitedCount]);
 
   const restart = () => {
     game.restart();
@@ -42,7 +49,11 @@ export function GamePage() {
   };
 
   if (!hasStarted) {
-    return <GameStartScreen onStart={() => setHasStarted(true)} saves={saves} onLoad={loadGame} onDeleteSave={(id) => setSaves(deleteSave(id))} />;
+    const startGame = () => {
+      unlockAchievement('first-step');
+      setHasStarted(true);
+    };
+    return <GameStartScreen onStart={startGame} saves={saves} onLoad={loadGame} onDeleteSave={(id) => setSaves(deleteSave(id))} />;
   }
 
   if (showIntro) {
@@ -50,7 +61,15 @@ export function GamePage() {
   }
 
   if (game.node.specialTarget === 'fishing') {
-    return <FishingGame onComplete={() => game.completeActivity('fishing', 'festival-grandma')} />;
+    return <FishingGame onComplete={() => { unlockAchievement('angler'); game.completeActivity('fishing', 'festival-grandma'); }} />;
+  }
+
+  if (game.node.specialTarget === 'healthy-food') {
+    return <HealthyFoodGame onComplete={() => { unlockAchievement('healthy-choice'); game.completeActivity('healthyFood', 'festival-feast-toast'); }} />;
+  }
+
+  if (game.node.specialTarget === 'library-search') {
+    return <LibrarySearchGame onComplete={() => { unlockAchievement('book-hunter'); game.completeActivity('library', 'festival-library-goodbye'); }} />;
   }
 
   if (game.node.specialTarget === 'chess') {

@@ -12,7 +12,7 @@ export type CharacterState = {
   mood: CharacterMood;
 };
 
-export type FestivalActivity = 'fishing' | 'friends' | 'library';
+export type FestivalActivity = 'fishing' | 'friends' | 'library' | 'healthyFood';
 
 export type StoryChoice = {
   id: string;
@@ -24,6 +24,7 @@ export type StoryChoice = {
   requiresItem?: string;
   requiresItems?: string[];
   hideIfItem?: string;
+  showIfItem?: string;
   requiresCollectedItems?: number;
   lockedDetail?: string;
   hideAfterTargetVisited?: boolean;
@@ -48,7 +49,7 @@ export type StoryNode = {
   isEnding?: boolean;
   endingFrames?: IntroFrame[];
   endingTarget?: string;
-  specialTarget?: 'fishing' | 'oracle' | 'chess';
+  specialTarget?: 'fishing' | 'oracle' | 'chess' | 'healthy-food' | 'library-search';
   specialReturnTarget?: string;
 };
 
