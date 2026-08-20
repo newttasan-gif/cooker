@@ -21,10 +21,16 @@ export const chapterOneCaveNodes: Record<string, StoryNode> = {
     title: 'Вода под камнями',
     text: 'Тонкая струя исчезает под плитой. На другом берегу видна старая верёвка, а вдоль воды тянется низкий проход.',
     choices: [
-      { id: 'stream-rope', label: 'Перейти к старой верёвке', detail: 'Осмотреть дальний берег', target: 'rope-crossing' },
+      { id: 'stream-rope', label: 'Перейти по камням', detail: 'Добраться до старой верёвки на дальнем берегу', target: 'stream-crossing' },
       { id: 'stream-low', label: 'Пробраться вдоль воды', detail: 'Проверить низкий проход', target: 'hidden-grotto' },
       { id: 'stream-cave', label: 'Вернуться к развилке', detail: 'Выбрать другой тоннель', target: 'cave' },
     ],
+  },
+  'stream-crossing': {
+    id: 'stream-crossing', kind: 'scene', location: 'Подземный ручей', artwork: caveArtwork,
+    character: { pose: 'walk', mood: 'focused' }, title: 'Камни над водой',
+    text: 'Некоторые камни устойчивы, другие сразу уходят под воду.', choices: [],
+    specialTarget: 'stepping-stones', specialReturnTarget: 'rope-crossing',
   },
   'crystal-gallery': {
     id: 'crystal-gallery', kind: 'scene', location: 'Блестящая галерея', artwork: caveArtwork,
@@ -43,10 +49,16 @@ export const chapterOneCaveNodes: Record<string, StoryNode> = {
     title: 'Шаги впереди',
     text: 'Каждый шаг возвращается двойным эхом. Затем среди отражений слышится ещё один звук — будто кто-то стукнул по камню три раза.',
     choices: [
-      { id: 'echo-answer', label: 'Ответить тремя стуками', detail: 'Проверить, ответит ли незнакомец', target: 'traveler-meeting' },
+      { id: 'echo-answer', label: 'Повторить ритм эха', detail: 'Ответить незнакомцу правильной последовательностью', target: 'echo-challenge' },
       { id: 'echo-quiet', label: 'Тихо пройти дальше', detail: 'Не выдавать своё положение', target: 'narrow-passage' },
       { id: 'echo-gallery', label: 'Свернуть к блеску', detail: 'Перейти в кристальную галерею', target: 'crystal-gallery' },
     ],
+  },
+  'echo-challenge': {
+    id: 'echo-challenge', kind: 'scene', location: 'Тоннель эха', artwork: caveArtwork,
+    character: { pose: 'dialogue', mood: 'focused' }, title: 'Ответ в темноту',
+    text: 'Три разных звука возвращаются от стен. Нужно повторить их в том же порядке.', choices: [],
+    specialTarget: 'echo', specialReturnTarget: 'traveler-meeting',
   },
   'rope-crossing': {
     id: 'rope-crossing', kind: 'scene', location: 'Каменный мостик', artwork: caveArtwork,
@@ -54,10 +66,16 @@ export const chapterOneCaveNodes: Record<string, StoryNode> = {
     title: 'Над чёрной расщелиной',
     text: 'Верёвка привязана к каменному выступу и помогает пройти по узкому мостику. За ним сходятся следы из нескольких тоннелей.',
     choices: [
-      { id: 'rope-marks', label: 'Осмотреть следы', detail: 'Идти к знакам на стене', target: 'marked-chamber' },
+      { id: 'rope-marks', label: 'Пройти над расщелиной', detail: 'Удержать равновесие на узком мостике', target: 'rope-balance' },
       { id: 'rope-grotto', label: 'Спуститься ниже', detail: 'Найти источник холодного воздуха', target: 'hidden-grotto' },
       { id: 'rope-stream', label: 'Вернуться через ручей', detail: 'Оставить мостик позади', target: 'underground-stream' },
     ],
+  },
+  'rope-balance': {
+    id: 'rope-balance', kind: 'scene', location: 'Каменный мостик', artwork: caveArtwork,
+    character: { pose: 'walk', mood: 'alert' }, title: 'Шаг над темнотой',
+    text: 'Верёвка дрожит, а узкий камень уходит в темноту.', choices: [],
+    specialTarget: 'balance', specialReturnTarget: 'marked-chamber',
   },
   'high-ledge': {
     id: 'high-ledge', kind: 'scene', location: 'Верхний уступ', artwork: caveArtwork,
@@ -100,9 +118,15 @@ export const chapterOneCaveNodes: Record<string, StoryNode> = {
     title: 'Знак старого искателя',
     text: 'На стене вырезана карта подножья и тот же знак из трёх камней. Рядом стрелка указывает на дальний выход — кто-то прошёл здесь совсем недавно.',
     choices: [
-      { id: 'chamber-exit', label: 'Последовать по стрелке', detail: 'Проверить дальний выход', target: 'far-exit' },
+      { id: 'chamber-exit', label: 'Разобрать знаки на стене', detail: 'Повернуть символы и открыть указатель', target: 'symbol-challenge' },
       { id: 'chamber-ledge', label: 'Подняться к уступу', detail: 'Осмотреть зал сверху', target: 'high-ledge' },
       { id: 'chamber-rope', label: 'Пойти по следам к воде', detail: 'Вернуться к каменному мостику', target: 'rope-crossing' },
     ],
+  },
+  'symbol-challenge': {
+    id: 'symbol-challenge', kind: 'scene', location: 'Круглый зал', artwork: caveArtwork,
+    character: { pose: 'interact', mood: 'focused' }, title: 'Каменный указатель',
+    text: 'Три диска должны повторить знак старого искателя.', choices: [],
+    specialTarget: 'symbols', specialReturnTarget: 'far-exit',
   },
 };

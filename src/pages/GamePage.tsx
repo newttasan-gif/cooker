@@ -6,6 +6,10 @@ import { FishingGame } from '../components/FishingGame';
 import { ChessGame } from '../components/ChessGame';
 import { HealthyFoodGame } from '../components/HealthyFoodGame';
 import { LibrarySearchGame } from '../components/LibrarySearchGame';
+import { PackingGame } from '../components/PackingGame';
+import { SequenceChallenge } from '../components/SequenceChallenge';
+import { SymbolPuzzle } from '../components/SymbolPuzzle';
+import { TimingChallenge } from '../components/TimingChallenge';
 import { chapterOne } from '../game/chapterOne';
 import { useStoryGame } from '../game/useStoryGame';
 import { createSave, deleteSave, getSaveTitle, loadSaves, type GameSave } from '../game/saves';
@@ -75,6 +79,15 @@ export function GamePage() {
   if (game.node.specialTarget === 'chess') {
     return <ChessGame onLeave={() => game.goTo(game.node.specialReturnTarget ?? 'grandma-talk')} />;
   }
+
+  const finishAdventure = () => game.goTo(game.node.specialReturnTarget ?? 'foothill');
+  if (game.node.specialTarget === 'packing') return <PackingGame onComplete={finishAdventure} />;
+  if (game.node.specialTarget === 'climb' || game.node.specialTarget === 'balance') {
+    return <TimingChallenge mode={game.node.specialTarget} onComplete={finishAdventure} />;
+  }
+  if (game.node.specialTarget === 'echo') return <SequenceChallenge mode="echo" onComplete={finishAdventure} />;
+  if (game.node.specialTarget === 'stepping-stones') return <SequenceChallenge mode="stones" onComplete={finishAdventure} />;
+  if (game.node.specialTarget === 'symbols') return <SymbolPuzzle onComplete={finishAdventure} />;
 
   if (game.node.endingFrames && !outroComplete) {
     const completeCutscene = () => {

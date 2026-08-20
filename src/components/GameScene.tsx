@@ -10,6 +10,7 @@ import { LibrarianCharacter } from './LibrarianCharacter';
 import { MiniSunCharacter } from './MiniSunCharacter';
 import { OraclePanel } from './OraclePanel';
 import { TravelerCharacter } from './TravelerCharacter';
+import { hasSceneCollectible, SceneCollectible } from './SceneCollectible';
 import '../styles/game-scene.css';
 
 type GameSceneProps = {
@@ -30,6 +31,12 @@ type GameSceneProps = {
 
 export function GameScene(props: GameSceneProps) {
   const { node, items, visitedCount, canChoose, isMoving, onChoose, onRestart, onSave, saveMessage } = props;
+  const collectibleChoice = hasSceneCollectible(node.id)
+    ? node.choices.find((choice) => choice.grantsItem && canChoose(choice))
+    : undefined;
+  const visibleChoices = collectibleChoice
+    ? node.choices.filter((choice) => choice.id !== collectibleChoice.id)
+    : node.choices;
 
   return (
     <main
@@ -38,6 +45,7 @@ export function GameScene(props: GameSceneProps) {
     >
       <div className="game-scene__art" />
       <div className="game-scene__shade" />
+      <SceneCollectible nodeId={node.id} choice={collectibleChoice} onCollect={onChoose} />
       <GlosCharacter pose={isMoving ? 'walk' : node.character.pose} mood={node.character.mood} />
       {node.encounter === 'traveler' && <TravelerCharacter />}
       {(node.encounter === 'friends' || node.encounter === 'tea') && <FriendsCharacters />}
@@ -62,7 +70,7 @@ export function GameScene(props: GameSceneProps) {
           <p className="story-card__view">{node.kind === 'dialogue' ? node.speaker : 'Исследование'}</p>
           <h1>{node.title}</h1>
           <p className="story-card__text">{node.text}</p>
-          {!node.isEnding && <ChoicePanel choices={node.choices} canChoose={canChoose} onChoose={onChoose} />}
+          {!node.isEnding && <ChoicePanel choices={visibleChoices} canChoose={canChoose} onChoose={onChoose} />}
         </section>
       )}
 

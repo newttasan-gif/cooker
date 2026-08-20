@@ -49,7 +49,8 @@ export type StoryNode = {
   isEnding?: boolean;
   endingFrames?: IntroFrame[];
   endingTarget?: string;
-  specialTarget?: 'fishing' | 'oracle' | 'chess' | 'healthy-food' | 'library-search';
+  specialTarget?: 'fishing' | 'oracle' | 'chess' | 'healthy-food' | 'library-search'
+    | 'packing' | 'climb' | 'stepping-stones' | 'echo' | 'balance' | 'symbols';
   specialReturnTarget?: string;
 };
 

@@ -13,7 +13,7 @@ import { chapterOneSecretNodes } from './chapterOneSecret';
 export const chapterOne: Chapter = {
   id: 'first-trip',
   title: 'Первая вылазка',
-  startNode: 'foothill',
+  startNode: 'packing',
   startingItems: ['bag', 'glasses'],
   intro: [
     { text: 'Меня зовут Глос.', duration: 1100 },
@@ -36,6 +36,12 @@ export const chapterOne: Chapter = {
     'green-book-clue': { id: 'green-book-clue', name: 'Совет бабушки', description: 'Семь зелёных книг спрятаны среди обычных корешков.' },
   },
   nodes: {
+    packing: {
+      id: 'packing', kind: 'scene', location: 'Дом Глоса', artwork: '/game/locations/grandma-house.svg',
+      character: { pose: 'interact', mood: 'focused' }, title: 'Собраться в дорогу',
+      text: 'Перед выходом нужно уложить самое важное в небольшую походную сумку.',
+      choices: [], specialTarget: 'packing', specialReturnTarget: 'foothill',
+    },
     foothill: {
       id: 'foothill', kind: 'scene', location: 'Подножье', artwork: '/game/locations/foothill.svg',
       character: { pose: 'stop', mood: 'neutral' },
@@ -102,10 +108,16 @@ export const chapterOne: Chapter = {
       title: 'Чуть выше деревьев',
       text: 'Отсюда уже видно деревню. Впереди тропа ведёт к неглубокой пещере. Я могу продолжить поиски или спуститься и проверить другие места.',
       choices: [
-        { id: 'to-cave', label: 'Подойти к пещере', detail: 'Закончить исследование подножья', target: 'cave' },
+        { id: 'to-cave', label: 'Подняться к пещере', detail: 'Преодолеть крутой участок склона', target: 'slope-climb' },
         { id: 'slope-stones', label: 'Спуститься через камни', detail: 'Проверить правую сторону', target: 'stones' },
         { id: 'slope-back', label: 'Вернуться к развилке', detail: 'Выбрать другой путь', target: 'foothill' },
       ],
+    },
+    'slope-climb': {
+      id: 'slope-climb', kind: 'scene', location: 'Крутой склон', artwork: '/game/locations/sunny-slope.svg',
+      character: { pose: 'walk', mood: 'focused' }, title: 'Последние метры подъёма',
+      text: 'Камни осыпаются из-под ног. Нужно ловить спокойный ритм и выбирать надёжные выступы.',
+      choices: [], specialTarget: 'climb', specialReturnTarget: 'cave',
     },
     ...chapterOneCaveNodes,
     ...chapterOneTravelerNodes,
