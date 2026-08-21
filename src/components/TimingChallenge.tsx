@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/adventure-games.css';
+import '../styles/mountain-mini-games.css';
 
 type TimingChallengeProps = { mode: 'climb' | 'balance'; onComplete: () => void };
 
@@ -31,7 +32,12 @@ export function TimingChallenge({ mode, onComplete }: TimingChallengeProps) {
 
   return <main className={`adventure-game adventure-game--${mode}`}>
     <header><span>{mode === 'climb' ? 'Крутой склон' : 'Каменный мостик'}</span><strong>{progress}/{goal}</strong></header>
-    <section className="timing-scene"><div className="mountain-shapes"><i /><i /><i /></div>
+    <section className="timing-scene">
+      <div className="mountain-sky"><i /><i /><i /></div>
+      <div className="mountain-shapes"><i /><i /><i /></div>
+      <div className="mountain-trail"><i /><i /><i /><i /><i /></div>
+      <div className="mountain-pines"><i /><i /><i /><i /><i /></div>
+      <div className="climber" aria-hidden="true"><i /><i /><i /></div>
       <div className="timing-meter"><span className="timing-meter__ticks" /><span className="timing-zone" /><b style={{ left: `${position}%` }} /></div>
       <p className="timing-feedback">{feedback}</p>
       <button type="button" onClick={act}>{mode === 'climb' ? 'Схватиться' : 'Сделать шаг'}</button>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../styles/adventure-games.css';
+import '../styles/mountain-mini-games.css';
 
 const sequences = { echo: [0, 2, 1, 0], stones: [1, 3, 0, 2, 1] };
 const labels = { echo: ['низкий', 'тихий', 'звонкий'], stones: ['камень 1', 'камень 2', 'камень 3', 'камень 4'] };
@@ -26,8 +27,13 @@ export function SequenceChallenge({ mode, onComplete }: { mode: 'echo' | 'stones
 
   return <main className="adventure-game adventure-game--sequence">
     <header><span>{mode === 'echo' ? 'Тоннель эха' : 'Камни после воды'}</span><strong>{watching ? 'Слушай' : `${input.length}/${sequence.length}`}</strong></header>
-    <section className="sequence-field">{labels[mode].map((label, index) => <button type="button" key={label}
-      className={shown >= 0 && sequence[shown] === index ? 'is-sounding' : ''} onClick={() => choose(index)} aria-label={label}><i /><span>{label}</span></button>)}</section>
+    <section className={`sequence-field sequence-field--${mode}`}>
+      <div className="cave-ceiling"><i /><i /><i /><i /><i /></div>
+      <div className="cave-depth"><i /><i /><i /></div>
+      {mode === 'stones' && <div className="stream-ripples"><i /><i /><i /><i /></div>}
+      <div className="sequence-actions">{labels[mode].map((label, index) => <button type="button" key={label}
+      className={shown >= 0 && sequence[shown] === index ? 'is-sounding' : ''} onClick={() => choose(index)} aria-label={label}><i /><span>{label}</span></button>)}</div>
+    </section>
     <footer><p>{watching ? 'Запомни порядок.' : 'Повтори последовательность. Ошибка просто сбросит ввод.'}</p></footer>
   </main>;
 }

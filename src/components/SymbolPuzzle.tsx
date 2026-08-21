@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/adventure-games.css';
+import '../styles/mountain-mini-games.css';
 
 const symbols = ['△', '○', '◇'];
 const answer = [2, 0, 1];
@@ -10,7 +11,10 @@ export function SymbolPuzzle({ onComplete }: { onComplete: () => void }) {
   const solved = rings.every((value, index) => value === answer[index]);
   return <main className="adventure-game adventure-game--symbols">
     <header><span>Круглый зал</span><strong>Каменный указатель</strong></header>
-    <section className="symbol-wall"><div className="symbol-clue">◇ · △ · ○</div><div className="symbol-rings">
+    <section className="symbol-wall">
+      <div className="symbol-pillars"><i /><i /><i /><i /></div>
+      <div className="symbol-crystals"><i /><i /><i /><i /><i /></div>
+      <div className="symbol-clue">◇ · △ · ○</div><div className="symbol-rings">
       {rings.map((value, index) => <button key={index} type="button" onClick={() => turn(index)}>{symbols[value]}</button>)}
     </div></section>
     <footer><p>Поверни три диска по вырезанному над ними знаку.</p><button type="button" disabled={!solved} onClick={onComplete}>Нажать на центр</button></footer>

@@ -1,0 +1,31 @@
+.timing-scene { isolation: isolate; background: linear-gradient(#9caead 0 42%, #65736f 42% 68%, #384943 68%); }
+.mountain-sky { position: absolute; inset: 0; overflow: hidden; }
+.mountain-sky i:first-child { position: absolute; top: 9%; right: 13%; width: 56px; aspect-ratio: 1; border-radius: 50%; background: #d9c59b; box-shadow: 0 0 0 13px rgba(217,197,155,.12); }
+.mountain-sky i:nth-child(2), .mountain-sky i:nth-child(3) { position: absolute; top: 17%; left: 8%; width: 130px; height: 9px; border-radius: 50%; background: rgba(226,229,214,.35); box-shadow: 42px 8px rgba(226,229,214,.22); }
+.mountain-sky i:nth-child(3) { top: 28%; left: auto; right: 24%; transform: scale(.65); }
+.mountain-shapes i { filter: drop-shadow(12px 0 rgba(31,48,44,.14)); }
+.mountain-shapes i::after { content: ''; position: absolute; inset: 32% 25% 0; background: #84908b; clip-path: polygon(50% 0,100% 100%,0 100%); }
+.mountain-trail { position: absolute; z-index: 1; inset: auto 0 0; height: 43%; background: #465751; clip-path: polygon(0 40%,24% 15%,47% 37%,68% 3%,100% 25%,100% 100%,0 100%); }
+.mountain-trail i { position: absolute; bottom: 18%; width: 58px; height: 31px; border-radius: 52% 48% 35% 30%; background: #657069; box-shadow: inset -9px -7px #56615c; }
+.mountain-trail i:nth-child(1){left:8%}.mountain-trail i:nth-child(2){left:26%;bottom:36%;transform:scale(.7)}.mountain-trail i:nth-child(3){left:54%;bottom:23%;transform:scale(1.2)}.mountain-trail i:nth-child(4){right:20%;bottom:49%;transform:scale(.55)}.mountain-trail i:nth-child(5){right:5%;transform:scale(.85)}
+.mountain-pines i { position:absolute; z-index:1; bottom:31%; width:40px; height:95px; background:#263e39; clip-path:polygon(50% 0,72% 34%,62% 34%,88% 67%,68% 67%,100% 100%,0 100%,32% 67%,12% 67%,38% 34%,28% 34%); }
+.mountain-pines i:nth-child(1){left:3%}.mountain-pines i:nth-child(2){left:13%;bottom:27%;transform:scale(.72)}.mountain-pines i:nth-child(3){right:4%;transform:scale(1.25)}.mountain-pines i:nth-child(4){right:15%;bottom:28%;transform:scale(.8)}.mountain-pines i:nth-child(5){right:25%;bottom:35%;transform:scale(.55)}
+.climber { position:absolute; z-index:2; left:50%; bottom:36%; width:22px; height:45px; transform:translateX(-50%); }
+.climber i:first-child{position:absolute;left:6px;width:11px;aspect-ratio:1;border-radius:50%;background:#d4ae82}.climber i:nth-child(2){position:absolute;top:10px;left:3px;width:17px;height:22px;background:#8d6044;clip-path:polygon(15% 0,85% 0,100% 100%,0 100%)}.climber i:last-child{position:absolute;top:30px;width:22px;height:15px;border-left:5px solid #263b38;border-right:5px solid #263b38;transform:skew(-12deg)}
+.timing-meter, .timing-feedback, .timing-scene > button { z-index: 3; }
+.sequence-field { position: relative; isolation: isolate; overflow: hidden; }
+.sequence-actions { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; gap: clamp(14px,4vw,55px); }
+.cave-ceiling i { position:absolute; z-index:1; top:0; width:10%; height:22%; background:#1d302d; clip-path:polygon(0 0,100% 0,50% 100%); }
+.cave-ceiling i:nth-child(1){left:5%}.cave-ceiling i:nth-child(2){left:27%;height:14%}.cave-ceiling i:nth-child(3){left:48%;height:25%}.cave-ceiling i:nth-child(4){right:22%;height:16%}.cave-ceiling i:nth-child(5){right:3%;height:28%}
+.cave-depth { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%,rgba(126,153,140,.35),transparent 35%); }
+.cave-depth i { position:absolute; bottom:0; width:22%; height:34%; background:#314943; clip-path:polygon(0 100%,20% 30%,42% 65%,64% 0,100% 100%); }.cave-depth i:nth-child(2){left:39%;transform:scale(.72)}.cave-depth i:last-child{right:0;transform:scaleX(-1)}
+.stream-ripples { position:absolute; z-index:1; inset:auto 0 0; height:42%; background:#324f50; clip-path:polygon(0 20%,23% 8%,45% 22%,68% 4%,100% 18%,100% 100%,0 100%); }
+.stream-ripples i { position:absolute; width:18%; height:12px; border:2px solid #789797; border-color:#789797 transparent transparent; border-radius:50%; }.stream-ripples i:nth-child(1){left:8%;top:38%}.stream-ripples i:nth-child(2){left:33%;top:66%}.stream-ripples i:nth-child(3){right:27%;top:28%}.stream-ripples i:nth-child(4){right:5%;top:74%}
+.sequence-field--stones .sequence-actions button { border-radius:42% 58% 46% 54%; box-shadow:inset -10px -12px #354b46,0 16px 0 rgba(13,31,29,.25); }
+.symbol-wall { position:relative; isolation:isolate; overflow:hidden; background:radial-gradient(circle at 50% 45%,#536862 0 12%,#384c48 48%,#233a36 100%); }
+.symbol-wall::before { content:''; position:absolute; width:min(620px,88vw); aspect-ratio:1; border:18px solid rgba(113,133,124,.22); border-radius:50%; box-shadow:inset 0 0 0 3px rgba(196,175,133,.18),0 0 0 32px rgba(27,48,44,.3); }
+.symbol-pillars i { position:absolute; bottom:0; width:11%; height:74%; background:#2b403c; clip-path:polygon(12% 0,88% 0,100% 8%,83% 13%,90% 100%,10% 100%,17% 13%,0 8%); }.symbol-pillars i:nth-child(1){left:2%}.symbol-pillars i:nth-child(2){left:16%;height:48%}.symbol-pillars i:nth-child(3){right:16%;height:48%}.symbol-pillars i:nth-child(4){right:2%}
+.symbol-crystals i { position:absolute; z-index:1; bottom:3%; width:24px; height:70px; background:#6f958d; clip-path:polygon(50% 0,100% 70%,72% 100%,25% 94%,0 68%); opacity:.55; }.symbol-crystals i:nth-child(1){left:7%}.symbol-crystals i:nth-child(2){left:12%;height:42px}.symbol-crystals i:nth-child(3){right:8%;height:58px}.symbol-crystals i:nth-child(4){right:15%;height:35px}.symbol-crystals i:nth-child(5){right:4%;height:30px}
+.symbol-clue,.symbol-rings { position:relative; z-index:2; }
+.symbol-rings button { box-shadow:inset 0 0 0 7px #435650, inset -12px -10px rgba(22,40,36,.3),0 9px 20px rgba(10,25,22,.32); }
+@media(max-width:700px){.mountain-pines i:nth-child(2),.mountain-pines i:nth-child(4),.climber{display:none}.sequence-actions{gap:8px}.symbol-wall::before{border-width:10px}.symbol-clue{letter-spacing:.55em}}
